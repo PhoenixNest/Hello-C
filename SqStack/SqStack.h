@@ -18,18 +18,20 @@ typedef struct {
     int increment;
 } SqStack;
 
-Status InitStack_Sq(SqStack sqStack, int size, int increment);
+Status InitStack_Sq(SqStack *sqStack, int size, int increment);
 
-Status DestroyStack_Sq(SqStack sqStack);
+Status DestroyStack_Sq(SqStack *sqStack);
 
 Status StackEmpty_Sq(SqStack sqStack);
 
-void ClearStack_Sq(SqStack sqStack);
+void ClearStack_Sq(SqStack *sqStack);
 
-Status Push_Sq(SqStack sqStack, ElemType elemType);
+Status Push_Sq(SqStack *sqStack, ElemType elem);
 
-Status Pop_Sq(SqStack sqStack, ElemType elemType);
+Status Pop_Sq(SqStack *sqStack, ElemType *elem);
 
-Status GetTop_Sq(SqStack sqStack, ElemType elemType);
+Status GetTop_Sq(SqStack sqStack, ElemType *elem);
+
+Status Traverse_Sq(SqStack sqStack);
 
 #endif //HELLO_C_SQSTACK_H
