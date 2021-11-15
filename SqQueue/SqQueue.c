@@ -3,24 +3,47 @@
 //
 
 #include "SqQueue.h"
-
 #include "Status.h"
 
+#define MaxSize 100
+
 Status InitQueue_Sq(SqQueue *sqQueue, int size) {
-    sqQueue->elem = (ElemType *) malloc(size * sizeof(ElemType));
+    sqQueue->base = (ElemType *) malloc(size * sizeof(ElemType));
 
-    if (NULL == sqQueue->elem) { return OVERFLOW; }
+    if (NULL == sqQueue->base) { return OVERFLOW; }
 
-    sqQueue->maxSize = size;
+    sqQueue->size = size;
     sqQueue->front = sqQueue->rear = 0;
 
     return OK;
 }
 
-Status EnQueue_Sq(SqQueue *sqQueue, ElemType elem) {
-    if (sqQueue->front == sqQueue->rear) { return ERROR; }
+Status QueueEmpty_Sq(SqQueue sqQueue) {
+    if (sqQueue.rear == sqQueue.front) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
 
-    sqQueue->elem[sqQueue->rear] = elem;
+int QueueLength_Sq(SqQueue sqQueue) {
+    return QueueEmpty_Sq(sqQueue) ?
+           0 : (sqQueue.rear - sqQueue.front + MaxSize) % MaxSize;
+}
+
+Status GetHead_Sq(SqQueue sqQueue, ElemType *elem) {
+    QueueEmpty_Sq(sqQueue);
+
+    *elem = sqQueue.base[sqQueue.front];
+
+    return OK;
+}
+
+Status EnQueue_Sq(SqQueue *sqQueue, ElemType elem) {
+    if ((sqQueue->rear + 1) % sqQueue->size == sqQueue->front) { return ERROR; }
+
+    sqQueue->base[sqQueue->rear] = elem;
+    sqQueue->rear = (sqQueue->rear + 1) % sqQueue->size;
 
     return OK;
 }
@@ -28,8 +51,8 @@ Status EnQueue_Sq(SqQueue *sqQueue, ElemType elem) {
 Status DeQueue_Sq(SqQueue *sqQueue, ElemType *elem) {
     if (sqQueue->front == sqQueue->rear) { return ERROR; }
 
-    elem = &sqQueue->elem[sqQueue->front];
-    sqQueue->rear = (sqQueue->rear + 1) % sqQueue->maxSize;
+    *elem = sqQueue->base[sqQueue->front];
+    sqQueue->front = (sqQueue->front + 1) % sqQueue->size;
 
     return OK;
 }

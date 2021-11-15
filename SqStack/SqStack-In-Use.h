@@ -8,7 +8,7 @@
 #include "Status.h"
 #include "SqStack.h"
 
-void Conversation(int num);
+void Conversion(int num);
 
 Status Matching(char *exp, int n);
 

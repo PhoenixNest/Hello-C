@@ -4,12 +4,9 @@
 
 #include <stdio.h>
 #include "SqStack.h"
+#include "SqStack-In-Use.h"
 
-#define Default_Size 10
-
-void printElem(ElemType elem) {
-    printf("\"%d\" ", elem);
-}
+#define Default_Size 5
 
 int main() {
     printf("---SqStack\n");
@@ -23,12 +20,12 @@ int main() {
 
     printf("---判空\n");
     {
-        StackEmpty_Sq(sqStack) ? printf("Empty!\n") : printf("Pass!\n");
+        StackEmpty_Sq(sqStack) ? printf("空栈，请先将元素入栈！\n") : printf("非空！\n");
     }
 
-    printf("---进栈---\n");
+    printf("---进栈\n");
     {
-        for (int i = 0; i < Default_Size; ++i) {
+        for (int i = 1; i <= Default_Size; ++i) {
             Push_Sq(&sqStack, 2 * i);
             printf("\"%d\" 进栈\n", 2 * i);
         }
@@ -43,8 +40,13 @@ int main() {
     printf("---取栈顶\n");
     {
         GetTop_Sq(sqStack, &elem);
-        printf("%d", elem);
+        printf("%d\n", elem);
     }
+
+    // printf("---十进制转八进制\n");
+    // {
+    //     Conversion(342391);
+    // }
 
     return 0;
 }

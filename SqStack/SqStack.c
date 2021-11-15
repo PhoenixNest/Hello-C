@@ -5,9 +5,9 @@
 #include "SqStack.h"
 
 Status InitStack_Sq(SqStack *sqStack, int size, int increment) {
-    sqStack->elem = (ElemType *) malloc(size * sizeof(ElemType));
+    sqStack->base = (ElemType *) malloc(size * sizeof(ElemType));
 
-    if (sqStack->elem == NULL) { return OVERFLOW; }
+    if (sqStack->base == NULL) { return OVERFLOW; }
 
     sqStack->top = 0;
     sqStack->size = size;
@@ -16,22 +16,22 @@ Status InitStack_Sq(SqStack *sqStack, int size, int increment) {
     return OK;
 }
 
-Status DestroyStack_Sq(SqStack *sqStack) {
-    if (sqStack == NULL) {
-        return ERROR;
-    }
-
-    free(sqStack->elem);
-
-    sqStack->elem = NULL;
-    sqStack->top = NULL;
-    sqStack->size = 0;
-
-    return OK;
-}
+//Status DestroyStack_Sq(SqStack *sqStack) {
+//    if (sqStack == NULL) {
+//        return ERROR;
+//    }
+//
+//    free(sqStack->base);
+//
+//    sqStack->base = NULL;
+//    sqStack->top = NULL;
+//    sqStack->size = 0;
+//
+//    return OK;
+//}
 
 Status StackEmpty_Sq(SqStack sqStack) {
-    if (&sqStack.top == sqStack.elem) {
+    if (&sqStack.top == sqStack.base) {
         return TRUE;
     } else {
         return FALSE;
@@ -39,23 +39,22 @@ Status StackEmpty_Sq(SqStack sqStack) {
 }
 
 void ClearStack_Sq(SqStack *sqStack) {
-
     StackEmpty_Sq(*sqStack);
 
-    sqStack->top = *sqStack->elem;
+    sqStack->top = *sqStack->base;
 }
 
 Status Push_Sq(SqStack *sqStack, ElemType elem) {
     ElemType *newBase;
     if (sqStack->top >= sqStack->size) {
-        newBase = (ElemType *) realloc(sqStack->elem, ((*sqStack).size + sqStack->increment) * sizeof(ElemType));
+        newBase = (ElemType *) realloc(sqStack->base, ((*sqStack).size + sqStack->increment) * sizeof(ElemType));
 
         if (NULL == newBase) return OVERFLOW;
 
-        sqStack->elem = newBase;
+        sqStack->base = newBase;
         sqStack->size += sqStack->increment;
     }
-    sqStack->elem[(sqStack->top)++] = elem;
+    sqStack->base[(sqStack->top)++] = elem;
     return OK;
 }
 
@@ -64,16 +63,15 @@ Status Pop_Sq(SqStack *sqStack, ElemType *elem) {
         return ERROR;
     }
 
-    *elem = sqStack->elem[--sqStack->top];
-    sqStack->elem[--sqStack->top];
+    *elem = sqStack->base[--(sqStack->top)];
     return OK;
 }
 
 Status GetTop_Sq(SqStack sqStack, ElemType *elem) {
     if (StackEmpty_Sq(sqStack)) {
-        return ERROR;
+        return 0;
     }
 
-    *elem = sqStack.elem[sqStack.top];
+    *elem = sqStack.base[sqStack.top - 1];
     return OK;
 }

@@ -12,10 +12,10 @@
 typedef int ElemType;
 
 typedef struct {
-    ElemType *elem;
+    ElemType *base;
     int front;
     int rear;
-    int maxSize;
+    int size;
 } SqQueue;
 
 Status InitQueue_Sq(SqQueue *sqQueue, int size);

@@ -12,7 +12,7 @@
 typedef int ElemType;
 
 typedef struct {
-    ElemType *elem;
+    ElemType *base;
     int top;
     int size;
     int increment;
@@ -31,7 +31,5 @@ Status Push_Sq(SqStack *sqStack, ElemType elem);
 Status Pop_Sq(SqStack *sqStack, ElemType *elem);
 
 Status GetTop_Sq(SqStack sqStack, ElemType *elem);
-
-Status Traverse_Sq(SqStack sqStack);
 
 #endif //HELLO_C_SQSTACK_H
