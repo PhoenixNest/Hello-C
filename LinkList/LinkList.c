@@ -4,6 +4,8 @@
 
 #include "LinkList.h"
 
+// 单链表
+
 // 初始化一个只带头结点的单链表
 Status InitList_L(LinkList *linkList) {
     if (NULL == (*linkList = (LinkListNode *) malloc(sizeof(LinkListNode)))) {
@@ -31,7 +33,7 @@ Status CreateList_L(LinkList *linkList, int num, ElemType *array) {
     return OK;
 }
 
-// 查找表中数据域值为 elem 的元素的节点地址
+// 查找表中数据域值为 recordElem 的元素的节点地址
 LinkListNode *Search_L(LinkList linkList, ElemType elem) {
     LinkListNode *node;
     if (NULL == linkList) {
@@ -85,7 +87,7 @@ Status InsertAfter_L(LinkListNode *p, LinkListNode *q) {
     return OK;
 }
 
-// 删除 p结点 的直接后继结点，并用参数 elem 返回被删除结点的值
+// 删除 p结点 的直接后继结点，并用参数 recordElem 返回被删除结点的值
 Status DeleteAfter_L(LinkListNode *p, ElemType elem) {
     LinkListNode *q;
     if (NULL == p || NULL == p->next) {

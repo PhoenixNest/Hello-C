@@ -4,6 +4,8 @@
 
 #include "DuelLinkList.h"
 
+// 双向链表
+
 // 在 p结点 前插入 q结点
 Status InsertBefore_DuL(DuelLinkListNode *p, DuelLinkListNode *q) {
     if (p == NULL || q == NULL || p->prior == NULL) {
