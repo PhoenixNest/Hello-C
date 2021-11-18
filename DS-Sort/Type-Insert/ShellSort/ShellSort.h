@@ -5,8 +5,11 @@
 #ifndef HELLO_C_SHELLSORT_H
 #define HELLO_C_SHELLSORT_H
 
-#include "RecordType.h"
-#include "RecordList.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "RecordType/RecordType.h"
+#include "RecordList/RecordList.h"
 
 void ShellInsert(RecordList *list, int gap);
 

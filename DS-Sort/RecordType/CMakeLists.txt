@@ -1,0 +1,1 @@
+add_library(RecordType.h RecordType.c)

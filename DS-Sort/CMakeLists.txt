@@ -1,6 +1,5 @@
-add_executable(RecordType RecordType.h RecordType.c RecordType.h RecordList.c RecordList.h)
+include_directories(${CMAKE_SOURCE_DIR}/Status)
 
-target_link_libraries(RecordType Scanf_lib)
-
-add_subdirectory(StraightInsertSort)
-add_subdirectory(ShellSort)
+add_subdirectory(RecordType)
+add_subdirectory(RecordList)
+add_subdirectory(Type-Insert)

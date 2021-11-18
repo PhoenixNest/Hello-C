@@ -7,7 +7,9 @@
 Status InitStack_Sq(SqStack *sqStack, int size, int increment) {
     sqStack->base = (ElemType *) malloc(size * sizeof(ElemType));
 
-    if (sqStack->base == NULL) { return OVERFLOW; }
+    if (sqStack->base == NULL) {
+        return OVERFLOW;
+    }
 
     sqStack->top = 0;
     sqStack->size = size;
@@ -49,7 +51,9 @@ Status Push_Sq(SqStack *sqStack, ElemType elem) {
     if (sqStack->top >= sqStack->size) {
         newBase = (ElemType *) realloc(sqStack->base, ((*sqStack).size + sqStack->increment) * sizeof(ElemType));
 
-        if (NULL == newBase) return OVERFLOW;
+        if (NULL == newBase) {
+            return OVERFLOW;
+        }
 
         sqStack->base = newBase;
         sqStack->size += sqStack->increment;

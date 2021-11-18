@@ -5,8 +5,11 @@
 #ifndef HELLO_C_STRAIGHTINSERTSORT_H
 #define HELLO_C_STRAIGHTINSERTSORT_H
 
-#include "RecordType.h"
-#include "RecordList.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "RecordType/RecordType.h"
+#include "RecordList/RecordList.h"
 
 void StraightInsertSort(RecordList *list);
 

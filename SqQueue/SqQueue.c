@@ -10,7 +10,9 @@
 Status InitQueue_Sq(SqQueue *sqQueue, int size) {
     sqQueue->base = (ElemType *) malloc(size * sizeof(ElemType));
 
-    if (NULL == sqQueue->base) { return OVERFLOW; }
+    if (NULL == sqQueue->base) {
+        return OVERFLOW;
+    }
 
     sqQueue->size = size;
     sqQueue->front = sqQueue->rear = 0;
@@ -40,7 +42,9 @@ Status GetHead_Sq(SqQueue sqQueue, ElemType *elem) {
 }
 
 Status EnQueue_Sq(SqQueue *sqQueue, ElemType elem) {
-    if ((sqQueue->rear + 1) % sqQueue->size == sqQueue->front) { return ERROR; }
+    if ((sqQueue->rear + 1) % sqQueue->size == sqQueue->front) {
+        return ERROR;
+    }
 
     sqQueue->base[sqQueue->rear] = elem;
     sqQueue->rear = (sqQueue->rear + 1) % sqQueue->size;
@@ -49,7 +53,9 @@ Status EnQueue_Sq(SqQueue *sqQueue, ElemType elem) {
 }
 
 Status DeQueue_Sq(SqQueue *sqQueue, ElemType *elem) {
-    if (sqQueue->front == sqQueue->rear) { return ERROR; }
+    if (sqQueue->front == sqQueue->rear) {
+        return ERROR;
+    }
 
     *elem = sqQueue->base[sqQueue->front];
     sqQueue->front = (sqQueue->front + 1) % sqQueue->size;

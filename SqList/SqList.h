@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "Status.h"
 
 typedef int ElemType;
@@ -32,7 +33,7 @@ Status GetElem_Sq(SqList sqList, int position, ElemType *elem);
 
 int Search_Sq(SqList sqList, ElemType elem);
 
-Status ListTraverse_Sq(SqList sqList, Status(*visit)(ElemType elem));
+void ListTraverse_Sq(SqList sqList, void(*visit)(ElemType elem));
 
 Status PutElem_Sq(SqList *sqList, int i, ElemType elem);
 

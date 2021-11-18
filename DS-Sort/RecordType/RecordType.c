@@ -3,3 +3,8 @@
 //
 
 #include "RecordType.h"
+
+int main() {
+    
+    return 0;
+}
