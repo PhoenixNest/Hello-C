@@ -78,6 +78,8 @@ void ListTraverse_Sq(SqList sqList, void(*visit)(ElemType elem)) {
     for (int i = 0; i < sqList.length; i++) {
         visit(sqList.base[i]);
     }
+
+    printf("\n");
 }
 
 Status Insert_Sq(SqList *sqList, int position, ElemType elem) {

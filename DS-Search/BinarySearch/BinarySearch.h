@@ -1,0 +1,10 @@
+//
+// Created by P7XXTM1-G on 2021/11/19.
+//
+
+#ifndef HELLO_C_BINARYSEARCH_H
+#define HELLO_C_BINARYSEARCH_H
+
+
+
+#endif //HELLO_C_BINARYSEARCH_H

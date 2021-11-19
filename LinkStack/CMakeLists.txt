@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/Status)
+include_directories(${CMAKE_SOURCE_DIR}/static)
 
 add_executable(LinkStack LinkStack.h LinkStack.c LinkStack-main.cpp)
 

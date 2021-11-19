@@ -10,6 +10,7 @@
 #define OK 1
 #define ERROR 0
 #define OVERFLOW -1
+
 typedef int Status;
 
 #endif //HELLO_C_STATUS_H

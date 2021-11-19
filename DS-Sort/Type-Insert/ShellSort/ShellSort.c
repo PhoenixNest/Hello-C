@@ -5,8 +5,8 @@
 #include "ShellSort.h"
 
 void ShellInsert(RecordList *list, int gap) {
-    int j;
-    for (int i = 0; i < list->length; ++i) {
+    int i, j;
+    for (i = 0; i < list->length - gap; ++i) {
         if (list->base[i + gap].key < list->base[i].key) {
             list->base[0] = list->base[i + gap];
             j = i + gap;

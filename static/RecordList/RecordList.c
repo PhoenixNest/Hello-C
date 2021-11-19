@@ -17,25 +17,15 @@ Status InitList_Rec(RecordList *recordList, int size) {
     return OK;
 }
 
-Status Append_Sq(RecordList *recordList, RecordElemType elem) {
-    RecordElemType *newBase;
-    if (recordList->length >= recordList->size) {
-        newBase = (RecordElemType *) realloc(recordList->base,
-                                             ((*recordList).size + recordList->increment) * sizeof(ElemType));
-
-        if (NULL == newBase) {
-            return OVERFLOW;
-        }
-
-        recordList->base = newBase;
+void ListTraverse_Rec(RecordList sqList, void(*visit)(RecordElemType elem)) {
+    for (int i = 0; i < sqList.length; i++) {
+        visit(sqList.base[i]);
     }
 
-    recordList->base[recordList->length] = elem;
-    return OK;
+    printf("\n");
 }
 
 Status Insert_Rec(RecordList *recordList, int position, RecordElemType elem) {
-    RecordElemType *newBase;
     RecordElemType *p, *q;
 
     if (recordList == NULL || recordList->base == NULL) {
@@ -51,6 +41,7 @@ Status Insert_Rec(RecordList *recordList, int position, RecordElemType elem) {
     for (p = &recordList->base[recordList->length - 1]; p >= q; --p) {
         *(p + 1) = *p;
     }
+
     *q = elem;
     recordList->length++;
 

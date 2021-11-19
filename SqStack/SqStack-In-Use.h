@@ -5,7 +5,7 @@
 #ifndef HELLO_C_SQSTACK_IN_USE_H
 #define HELLO_C_SQSTACK_IN_USE_H
 
-#include "Status.h"
+#include "Status/Status.h"
 #include "SqStack.h"
 
 void Conversion(int num);

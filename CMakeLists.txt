@@ -3,7 +3,7 @@ project(Hello_C C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_subdirectory(Status)
+add_subdirectory(static)
 add_subdirectory(SqStack)
 add_subdirectory(SqQueue)
 add_subdirectory(SqList)
@@ -13,3 +13,4 @@ add_subdirectory(LinkList)
 add_subdirectory(DuelLinkList)
 add_subdirectory(CircleLinkList)
 add_subdirectory(DS-Sort)
+add_subdirectory(DS-Search)

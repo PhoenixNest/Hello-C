@@ -27,6 +27,11 @@ int main() {
         }
     }
 
+    printf("---非空判断\n");
+    {
+        printf(ListEmpty_Sq(sqList) ? "空\n" : "非空\n");
+    }
+
     printf("---当前表长\n");
     {
         printf("%d\n", ListLength(sqList));

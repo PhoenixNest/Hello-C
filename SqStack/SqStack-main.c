@@ -20,7 +20,7 @@ int main() {
 
     printf("---判空\n");
     {
-        StackEmpty_Sq(sqStack) ? printf("空栈，请先将元素入栈！\n") : printf("非空！\n");
+        printf(StackEmpty_Sq(sqStack) ? "空\n" : "非空\n");
     }
 
     printf("---进栈\n");

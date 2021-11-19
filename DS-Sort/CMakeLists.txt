@@ -1,5 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/Status)
+include_directories(${CMAKE_SOURCE_DIR}/static)
 
-add_subdirectory(RecordType)
-add_subdirectory(RecordList)
 add_subdirectory(Type-Insert)
+add_subdirectory(Type-Radix)

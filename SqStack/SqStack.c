@@ -18,7 +18,7 @@ Status InitStack_Sq(SqStack *sqStack, int size, int increment) {
     return OK;
 }
 
-//Status DestroyStack_Sq(SqStack *sqStack) {
+//static DestroyStack_Sq(SqStack *sqStack) {
 //    if (sqStack == NULL) {
 //        return ERROR;
 //    }

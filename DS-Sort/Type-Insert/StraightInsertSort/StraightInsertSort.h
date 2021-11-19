@@ -11,6 +11,8 @@
 #include "RecordType/RecordType.h"
 #include "RecordList/RecordList.h"
 
+#define listSize 10
+
 void StraightInsertSort(RecordList *list);
 
 #endif //HELLO_C_STRAIGHTINSERTSORT_H

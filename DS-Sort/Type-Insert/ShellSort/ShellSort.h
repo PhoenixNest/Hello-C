@@ -11,6 +11,8 @@
 #include "RecordType/RecordType.h"
 #include "RecordList/RecordList.h"
 
+#define listSize 10
+
 void ShellInsert(RecordList *list, int gap);
 
 void ShellSort(RecordList *list, int gapArray[], int gapArraySize);

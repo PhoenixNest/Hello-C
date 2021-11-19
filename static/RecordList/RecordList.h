@@ -8,8 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Status.h"
-#include "RecordType/RecordType.h"
+#include "Status/Status.h"
+
+typedef int KeyType;
+
+typedef struct {
+    KeyType key;
+} RecordElemType;
 
 typedef struct {
     RecordElemType *base;
@@ -18,6 +23,8 @@ typedef struct {
 } RecordList;
 
 Status InitList_Rec(RecordList *recordList, int size);
+
+void ListTraverse_Rec(RecordList sqList, void(*visit)(RecordElemType elem));
 
 Status Insert_Rec(RecordList *recordList, int position, RecordElemType elem);
 
