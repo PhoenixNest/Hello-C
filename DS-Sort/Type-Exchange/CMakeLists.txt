@@ -1,0 +1,2 @@
+add_subdirectory(BubbleSort)
+add_subdirectory(QuickSort)

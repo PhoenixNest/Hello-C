@@ -4,6 +4,10 @@
 
 #include "StraightInsertSort.h"
 
+// 直接插入排序
+// 最好的时间复杂度：O(n)
+// 最差的时间复杂度：O(n^2)
+// 空间复杂度：O(1)
 void StraightInsertSort(RecordList *list) {
     int pos, j;
     for (pos = 0; pos < list->length; ++pos) {

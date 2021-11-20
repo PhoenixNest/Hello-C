@@ -5,6 +5,4 @@
 #ifndef HELLO_C_RADIXSORT_H
 #define HELLO_C_RADIXSORT_H
 
-
-
 #endif //HELLO_C_RADIXSORT_H

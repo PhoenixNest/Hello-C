@@ -1,0 +1,2 @@
+add_subdirectory(StraightSelectSort)
+add_subdirectory(HeapSort)

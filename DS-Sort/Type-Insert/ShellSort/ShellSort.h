@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "RecordType/RecordType.h"
 #include "RecordList/RecordList.h"
 
 #define listSize 10

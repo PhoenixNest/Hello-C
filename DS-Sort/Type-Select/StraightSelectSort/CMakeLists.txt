@@ -1,0 +1,3 @@
+add_executable(StraightSelectSort StraightSelectSort.h StraightSelectSort.c StraightSelectSort-main.c)
+
+target_link_libraries(StraightSelectSort Scanf_lib)

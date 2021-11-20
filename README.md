@@ -1,7 +1,5 @@
 # Hello-C
 
----
-
 ## 目录
 
 + 线性表（顺序/链式表示）：SqList、LinkList、DuelLinkList、CircleLinkList
