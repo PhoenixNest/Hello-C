@@ -13,7 +13,7 @@ int Partition(RecordElemType array[], int low, int high) {
     // 开始进行分割
     while (low < high) {
         // 大下标端找小于枢轴的记录
-        while (low < high && array[high].key >= array[0].key) {
+        while (low < high && array[high].value >= array[0].value) {
             --high;
         }
 
@@ -21,7 +21,7 @@ int Partition(RecordElemType array[], int low, int high) {
         array[low] = array[high];
 
         // 小下标端找大于枢轴的记录
-        while (low < high && array[low].key <= array[0].key) {
+        while (low < high && array[low].value <= array[0].value) {
             ++low;
         }
 

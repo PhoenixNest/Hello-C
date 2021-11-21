@@ -12,14 +12,32 @@ int BinarySearch(RecordElemType elem[], KeyType value, int low, int high) {
         return -1;
     }
 
-    if (elem[mid].key == value) {
+    if (elem[mid].value == value) {
         // 在 中间位置 就查找成功
         return mid;
-    } else if (elem[mid].key > value) {
+    } else if (elem[mid].value > value) {
         // 若待查找值 小于 中间值，则继续在给定序列 上半区 进行递归查找
         return BinarySearch(elem, value, low, mid - 1);
     } else {
         // 若待查找值 大于 中间值，则继续在给定序列 下半区 进行递归查找
         return BinarySearch(elem, value, mid + 1, high);
     }
+}
+
+// 迭代实现
+// 折半查找 / 二分查找
+int BinarySearch_iteration(RecordElemType elem[], KeyType value, int low, int high) {
+    int mid;
+    while (low <= high) {
+        mid = (low + high) / 2;
+        if (elem[mid].value == value) {
+            return mid;
+        } else if (elem[mid].value > value) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return -1;
 }

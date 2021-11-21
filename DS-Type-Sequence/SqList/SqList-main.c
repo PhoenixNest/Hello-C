@@ -39,7 +39,7 @@ int main() {
 
     printf("---当前表内元素\n");
     {
-        printf("当前表中元素：sqList = ");
+        printf("当前表中元素：");
         ListTraverse_Sq(sqList, PrintElem);
     }
 

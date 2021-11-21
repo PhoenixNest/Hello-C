@@ -7,13 +7,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "Status/Status.h"
+#include "../Status/Status.h"
 
 typedef int KeyType;
 
 typedef struct {
-    KeyType key;
+    KeyType value;
 } RecordElemType;
 
 typedef struct {

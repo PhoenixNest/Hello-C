@@ -11,14 +11,14 @@
 void StraightInsertSort(RecordList *list) {
     int pos, j;
     for (pos = 0; pos < list->length; ++pos) {
-        if (list->base[pos + 1].key < list->base[pos].key) {
+        if (list->base[pos + 1].value < list->base[pos].value) {
             list->base[0] = list->base[pos + 1];
             j = pos + 1;
 
             do {
                 j--;
                 list->base[j + 1] = list->base[j];
-            } while (list->base[0].key < list->base[j - 1].key);
+            } while (list->base[0].value < list->base[j - 1].value);
 
             list->base[j] = list->base[0];
         }

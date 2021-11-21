@@ -7,7 +7,7 @@
 void ShellInsert(RecordList *list, int gap) {
     int i, j;
     for (i = 0; i < list->length - gap; ++i) {
-        if (list->base[i + gap].key < list->base[i].key) {
+        if (list->base[i + gap].value < list->base[i].value) {
             list->base[0] = list->base[i + gap];
             j = i + gap;
         }
@@ -16,7 +16,7 @@ void ShellInsert(RecordList *list, int gap) {
         do {
             j -= gap;
             list->base[j + gap] = list->base[j];
-        } while (j - gap > 0 && list->base[0].key < list->base[j - gap].key);
+        } while (j - gap > 0 && list->base[0].value < list->base[j - gap].value);
 
         // 将待插入记录放到合适位置
         list->base[j] = list->base[0];

@@ -4,8 +4,10 @@
 
 #include "StraightInsertSort.h"
 
+#define listSize 10
+
 void PrintElem(RecordElemType e) {
-    printf("%d ", e.key);
+    printf("%d ", e.value);
 }
 
 int main() {
@@ -21,25 +23,25 @@ int main() {
         RecordElemType array[listSize] = {85, 56, 23, 98, 54, 74, 1, 4, 8, 31};
         for (int i = 0; i < recordList.size; i++) {
             Insert_Rec(&recordList, i, array[i]);
-            printf("在第 %d 个位置插入 \"%d\"\n", i, array[i].key);
+            printf("在第 %d 个位置插入 \"%d\"\n", i, array[i].value);
         }
     }
 
     printf("---当前表内元素\n");
     {
-        printf("当前表中元素：List = ");
+        printf("当前表中元素：");
         ListTraverse_Rec(recordList, PrintElem);
     }
 
 
-    printf("---对该表进行直接插入排序\n");
+    printf("---对该表进行 直接插入排序\n");
     {
         StraightInsertSort(&recordList);
     }
 
     printf("---排序后表内元素\n");
     {
-        printf("当前表中元素：List = ");
+        printf("当前表中元素：");
         ListTraverse_Rec(recordList, PrintElem);
     }
 

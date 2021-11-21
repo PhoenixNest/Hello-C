@@ -13,4 +13,8 @@ void MSort(RecordElemType array[], RecordElemType temp[], int i, int low, int hi
 
 void MergeSort(RecordList *recordList);
 
+void MSort_iteration(RecordElemType array[], RecordElemType temp[], int size);
+
+void MergeSort_iteration(RecordList *recordList);
+
 #endif //HELLO_C_MERGESORT_H

@@ -7,6 +7,6 @@
 
 #include "RecordList/RecordList.h"
 
-void BubbleSort(RecordElemType array[], int size);
+void BubbleSort(RecordList *recordList);
 
 #endif //HELLO_C_BUBBLESORT_H

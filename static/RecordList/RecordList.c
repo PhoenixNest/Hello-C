@@ -3,6 +3,7 @@
 //
 
 #include "RecordList.h"
+#include "../Status/Status.h"
 
 Status InitList_Rec(RecordList *recordList, int size) {
     recordList->base = (RecordElemType *) malloc(size * sizeof(RecordElemType));
