@@ -1,0 +1,3 @@
+add_executable(BinarySequenceTree BinarySequenceTree.h BinarySequenceTree.c)
+
+target_link_libraries(BinarySequenceTree Scanf_lib)

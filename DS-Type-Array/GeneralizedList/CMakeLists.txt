@@ -1,0 +1,3 @@
+add_executable(GeneralizedList GeneralizedList.h GeneralizedList.c)
+
+target_link_libraries(GeneralizedList Scanf_lib)
