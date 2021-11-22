@@ -3,10 +3,13 @@
 ## 目录
 
 ```tree
-├── DS-Search           // 搜索算法
-├── DS-Sort             // 排序算法
-├── DS-Type-Link        // 链式表示结构
 ├── DS-Type-Sequence    // 顺序表示结构
+├── DS-Type-Link        // 链式表示结构
+├── DS-Type-Array       // 串与广义表
+├── DS-Type-Tree        // 树
+├── DS-Type-Graph       // 图
+├── DS-Search           // 查找算法
+├── DS-Sort             // 排序算法
 └── static              // 静态结构体
 ```
 
