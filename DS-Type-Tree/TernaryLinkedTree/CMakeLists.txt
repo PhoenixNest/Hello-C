@@ -1,0 +1,3 @@
+add_executable(TernaryLinkedTree TernaryLinkedTree.h TernaryLinkedTree.c)
+
+target_link_libraries(TernaryLinkedTree Scanf_lib)

@@ -18,7 +18,7 @@
 //│         └── Type-Select
 //├── DS-Type-Array
 //│         └── GeneralizedList
-//|
+//│
 // 可表示为：A[1,5,1]
 //├─────── A[DS-Search[1],DS-Sort[5],DS-Type-Array[1]]
 
