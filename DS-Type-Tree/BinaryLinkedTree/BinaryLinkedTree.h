@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "Status/Status.h"
 #include "../../DS-Type-Link/LinkStack/LinkStack.h"
+#include "../../DS-Type-Link/LinkQueue/LinkQueue.h"
 
 typedef char TreeElemType;
 
@@ -21,11 +22,17 @@ void InitBinaryLinkedTree(BinaryLinkedTree *binaryLinkedTree);
 
 BinaryLinkedTree MakeBinaryTree(TreeElemType rootData, BinaryLinkedTree leftTree, BinaryLinkedTree rightTree);
 
-void DestroyBinaryLinkedTree(BinaryLinkedTree *binaryLinkedTree);
+BinaryLinkedTree CreateBinaryLinkedTree(char *defBT, int *i);
 
-Status BinaryLinkedTreeEmpty(BinaryLinkedTree binaryLinkedTree);
+void DestroyBinaryLinkedTree(BinaryLinkedTree *root);
+
+Status BinaryLinkedTreeEmpty(BinaryLinkedTree root);
 
 Status BreakBinaryLinkedTree(BinaryLinkedTree *root, BinaryLinkedTree *lTree, BinaryLinkedTree *rTree);
+
+int BinaryLinkedTreeDepth(BinaryLinkedTree root);
+
+void CountLeaf(BinaryLinkedTree root, int *count);
 
 Status ReplaceLeft(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *leftTree);
 

@@ -8,25 +8,107 @@
 
 // 创建二叉树
 BinaryLinkedTree MakeBinaryTree(TreeElemType rootData, BinaryLinkedTree leftTree, BinaryLinkedTree rightTree) {
-    // 创建一棵二叉树 T，其中根节点的值为 rootData，leftTree 和 rightTree 分别作为左子树和右子树
-    BinaryLinkedTree T;
+    // 创建一棵二叉树 newTree，其中根节点的值为 rootData，leftTree 和 rightTree 分别作为左子树和右子树
+    BinaryLinkedTree newTree;
 
-    T = (BinaryLinkedTree) malloc(sizeof(BinaryLinkedTreeNode));
+    newTree = (BinaryLinkedTree) malloc(sizeof(BinaryLinkedTreeNode));
 
-    if (T == NULL) {
+    if (newTree == NULL) {
         return NULL;
     }
 
     // 赋值根节点
-    T->data = rootData;
+    newTree->data = rootData;
 
     // 赋值左子树
-    T->leftChild = leftTree;
+    newTree->leftChild = leftTree;
 
     // 赋值右子树
-    T->rightChild = rightTree;
+    newTree->rightChild = rightTree;
 
-    return T;
+    return newTree;
+}
+
+// 先序构造二叉树
+BinaryLinkedTree CreateBinaryLinkedTree(char *defBT, int *i) {
+    // 基于先序遍历构造二叉树
+    // defBT：树形描述序列
+    // i：当前位标，初值为0
+
+    BinaryLinkedTree newTree;
+
+    TreeElemType elem;
+
+    elem = defBT[*i++];
+
+    if ('#' == elem) {
+        // 初始化空树
+        InitBinaryLinkedTree(&newTree);
+    } else {
+        // 构造根结点
+        newTree = MakeBinaryTree(elem, NULL, NULL);
+
+        // 构造左子树
+        newTree->leftChild = CreateBinaryLinkedTree(defBT, i);
+
+        // 构造右子树
+        newTree->rightChild = CreateBinaryLinkedTree(defBT, i);
+    }
+
+    return newTree;
+}
+
+// 销毁二叉树
+void DestroyBinaryLinkedTree(BinaryLinkedTree *root) {
+    // 二叉树非空
+    if (root != NULL) {
+        // 递归销毁左子树
+        DestroyBinaryLinkedTree(&(*root)->leftChild);
+        // 递归销毁右子树
+        DestroyBinaryLinkedTree(&(*root)->rightChild);
+
+        // 释放根结点
+        free(root);
+    }
+}
+
+// 判空
+Status BinaryLinkedTreeEmpty(BinaryLinkedTree root) {
+    return root == NULL ? TRUE : FALSE;
+}
+
+// 二叉树深度
+int BinaryLinkedTreeDepth(BinaryLinkedTree root) {
+    int depthLeft, depthRight;
+    if (root == NULL) {
+        // 空二叉树深度为0
+        return 0;
+    } else {
+        // 求左子树深度
+        depthLeft = BinaryLinkedTreeDepth(root->leftChild);
+
+        // 求右子树深度
+        depthRight = BinaryLinkedTreeDepth(root->rightChild);
+
+        // 左子树、右子树深度的较大值 + 1
+        return (depthLeft > depthRight ? depthLeft : depthRight) + 1;
+    }
+}
+
+// 统计叶子结点个数
+void CountLeaf(BinaryLinkedTree root, int *count) {
+    if (root != NULL) {
+        if (root->leftChild != NULL && root->rightChild != NULL) {
+            // 叶子总数计数
+            count++;
+        }
+
+        // 计算左子树
+        CountLeaf(root->leftChild, count);
+
+        // 计算右子树
+        CountLeaf(root->rightChild, count);
+    }
 }
 
 // 替换左子树
@@ -92,6 +174,8 @@ Status CutRight(BinaryLinkedTree *binaryLinkedTree) {
     return OK;
 }
 
+// -------------------------------------------------------------------------------//
+
 // 递归遍历
 // 前序遍历
 // 根 - 左 - 右
@@ -123,6 +207,8 @@ void PreOrderTraverse_OwnStyle(BinaryLinkedTree root, Status(*visit)(TreeElemTyp
     }
 }
 
+// -------------------------------------------------------------------------------//
+
 // 中序遍历
 // 左 - 根 - 右
 Status InOrderTraverse(BinaryLinkedTree root, Status(*visit)(TreeElemType elem)) {
@@ -152,6 +238,8 @@ void InOrderTraverse_OwnStyle(BinaryLinkedTree root, Status(*visit)(TreeElemType
         InOrderTraverse_OwnStyle(root->rightChild, visit);
     }
 }
+
+// -------------------------------------------------------------------------------//
 
 // 后序遍历
 // 左 - 右 - 根
@@ -183,6 +271,8 @@ void PostOrderTraverse_OwnStyle(BinaryLinkedTree root, Status(*visit)(TreeElemTy
     }
 }
 
+// -------------------------------------------------------------------------------//
+
 // 非递归遍历
 // 沿途找到最左下的结点，将沿途结点指针入栈
 BinaryLinkedTreeNode *GoFarLeft(BinaryLinkedTree root, LinkStack *stack) {
@@ -199,8 +289,9 @@ BinaryLinkedTreeNode *GoFarLeft(BinaryLinkedTree root, LinkStack *stack) {
 }
 
 // 非递归中序遍历
-// 每遇到一个结点就把它入栈，然后遍历左子树
-// 遍历完左子树后，从栈顶弹出这个结点并访问该结点，然后按照他的right域遍历该结点的右子树
+// 算法思想：
+// 1.每遇到一个结点就把它入栈，然后遍历左子树
+// 2.遍历完左子树后，从栈顶弹出这个结点并访问该结点，然后按照他的right域遍历该结点的右子树
 void InOrderTraverse_I(BinaryLinkedTree root, Status(*visit)(TreeElemType elem)) {
     LinkStack stack;
 
@@ -223,6 +314,44 @@ void InOrderTraverse_I(BinaryLinkedTree root, Status(*visit)(TreeElemType elem))
         } else {
             // 栈空时遍历结束
             pointer = NULL;
+        }
+    }
+}
+
+// -------------------------------------------------------------------------------//
+
+// 非递归层次遍历（广度优先遍历 / 宽度优先遍历）
+// 算法思想：
+// 1.初始化一个队列，把根结点（如果有）入队。
+// 2.若队列非空，则循环执行 步骤3～5，否则遍历结束。
+// 3.出队一个结点，并访问数据域。
+// 4.若该结点的左子树非空，则将左子树入队。
+// 5.若该结点的右子树非空，则将右子树入队。
+void LevelOrderTraverse(BinaryLinkedTree root, Status(*visit)(TreeElemType elemType)) {
+    if (root != NULL) {
+        LinkQueue queue;
+
+        InitQueue_LQ(&queue);
+
+        BinaryLinkedTree pointer = root;
+
+        // 访问根结点，并将根结点入队，
+        visit(pointer->data);
+        EnQueue_LQ(&queue, pointer);
+
+        // 当队列非空时重复执行操作，队头结点出队
+        while (DeQueue_LQ(&queue, pointer)) {
+            // 访问左子树并入队
+            if (pointer->leftChild != NULL) {
+                visit(pointer->leftChild->data);
+                EnQueue_LQ(&queue, pointer->leftChild);
+            }
+
+            // 访问右子树并入队
+            if (pointer->rightChild != NULL) {
+                visit(pointer->rightChild->data);
+                EnQueue_LQ(&queue, pointer->rightChild);
+            }
         }
     }
 }
