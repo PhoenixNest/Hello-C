@@ -18,7 +18,7 @@ typedef struct BinaryLinkedTreeNode {
     struct BinaryLinkedTreeNode *leftChild, *rightChild;
 } BinaryLinkedTreeNode, *BinaryLinkedTree;
 
-void InitBinaryLinkedTree(BinaryLinkedTree *binaryLinkedTree);
+void InitBinaryLinkedTree(BinaryLinkedTree *root);
 
 BinaryLinkedTree MakeBinaryTree(TreeElemType rootData, BinaryLinkedTree leftTree, BinaryLinkedTree rightTree);
 
@@ -34,13 +34,13 @@ int BinaryLinkedTreeDepth(BinaryLinkedTree root);
 
 void CountLeaf(BinaryLinkedTree root, int *count);
 
-Status ReplaceLeft(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *leftTree);
+Status ReplaceLeft(BinaryLinkedTree *root, BinaryLinkedTree *leftTree);
 
-Status ReplaceRight(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *rightTree);
+Status ReplaceRight(BinaryLinkedTree *root, BinaryLinkedTree *rightTree);
 
-Status CutLeft(BinaryLinkedTree *binaryLinkedTree);
+Status CutLeft(BinaryLinkedTree *root);
 
-Status CutRight(BinaryLinkedTree *binaryLinkedTree);
+Status CutRight(BinaryLinkedTree *root);
 
 Status PreOrderTraverse(BinaryLinkedTree root, Status(*visit)(TreeElemType elem));
 

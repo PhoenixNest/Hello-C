@@ -112,21 +112,21 @@ void CountLeaf(BinaryLinkedTree root, int *count) {
 }
 
 // 替换左子树
-Status ReplaceLeft(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *leftTree) {
-    // 替换左子树，若 binaryLinkedTree 非空，则用 leftTree 替换 binaryLinkedTree 的左子树，并用 leftTree 返回 binaryLinkedTree 的先前左子树
+Status ReplaceLeft(BinaryLinkedTree *root, BinaryLinkedTree *leftTree) {
+    // 替换左子树，若 root 非空，则用 leftTree 替换 root 的左子树，并用 leftTree 返回 root 的先前左子树
     BinaryLinkedTree temp;
 
-    if (binaryLinkedTree == NULL) {
+    if (root == NULL) {
         // 传入空树
         return ERROR;
     }
 
-    temp = (*binaryLinkedTree)->leftChild;
+    temp = (*root)->leftChild;
 
-    // 将新的 leftTree 作为 binaryLinkedTree 的新左子树
-    (*binaryLinkedTree)->leftChild = *leftTree;
+    // 将新的 leftTree 作为 root 的新左子树
+    (*root)->leftChild = *leftTree;
 
-    // 返回 binaryLinkedTree 的旧左子树
+    // 返回 root 的旧左子树
     *leftTree = temp;
 
     return OK;
@@ -134,16 +134,16 @@ Status ReplaceLeft(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *leftTre
 
 // 替换右子树
 // 步骤等同于 替换左子树，变动为：将左子树地址 修改为 右子树地址
-Status ReplaceRight(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *rightTree) {
+Status ReplaceRight(BinaryLinkedTree *root, BinaryLinkedTree *rightTree) {
     BinaryLinkedTree temp;
 
-    if (binaryLinkedTree == NULL) {
+    if (root == NULL) {
         return ERROR;
     }
 
-    temp = (*binaryLinkedTree)->rightChild;
+    temp = (*root)->rightChild;
 
-    (*binaryLinkedTree)->rightChild = *rightTree;
+    (*root)->rightChild = *rightTree;
 
     *rightTree = temp;
 
@@ -151,25 +151,25 @@ Status ReplaceRight(BinaryLinkedTree *binaryLinkedTree, BinaryLinkedTree *rightT
 }
 
 // 剪除左子树
-Status CutLeft(BinaryLinkedTree *binaryLinkedTree) {
+Status CutLeft(BinaryLinkedTree *root) {
 
-    if (binaryLinkedTree == NULL) {
+    if (root == NULL) {
         return ERROR;
     }
 
-    // 将空值赋予 binaryLinkedTree 的左子树地址，即可剪除 binaryLinkedTree 的所有左子树
-    (*binaryLinkedTree)->leftChild = NULL;
+    // 将空值赋予 root 的左子树地址，即可剪除 root 的所有左子树
+    (*root)->leftChild = NULL;
 
     return OK;
 }
 
 // 剪除右子树
-Status CutRight(BinaryLinkedTree *binaryLinkedTree) {
-    if (binaryLinkedTree == NULL) {
+Status CutRight(BinaryLinkedTree *root) {
+    if (root == NULL) {
         return ERROR;
     }
 
-    (*binaryLinkedTree)->rightChild = NULL;
+    (*root)->rightChild = NULL;
 
     return OK;
 }
