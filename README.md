@@ -2,6 +2,8 @@
 
 ## 目录
 
+使用教材：[《数据结构》吴伟民（高等教育出版社）](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/Book-PDF.zip)
+
 ```tree
 ├── DS-Type-Sequence    // 顺序表示结构
 ├── DS-Type-Link        // 链式表示结构
