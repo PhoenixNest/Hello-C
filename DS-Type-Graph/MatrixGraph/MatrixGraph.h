@@ -28,8 +28,8 @@ typedef struct {
     VexType *vexs;
     int **arcs;
 
-    int vexNum, arcNum;
-    GraphKind graphKind;
+    int vexNum, edgeNum;
+    GraphKind kind;
     int *tags;
 } MatrixGraph;
 
@@ -40,26 +40,26 @@ typedef struct {
     int info;
 } ArcInfo;
 
-Status InitGraph_M(MatrixGraph *matrixGraph, GraphKind graphKind, VexType *vexs, int vexNum);
+Status InitGraph_M(MatrixGraph *graph, GraphKind graphKind, VexType *vexs, int vexNum);
 
 Status
-CreateGraph_M(MatrixGraph *matrixGraph, GraphKind graphKind, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
+CreateGraph_M(MatrixGraph *graph, GraphKind graphKind, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
 
 Status CreateDG_M(MatrixGraph *matrixGraph, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
 
 Status CreateDN_M(MatrixGraph *matrixGraph, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
 
-Status CreateUDG_M(MatrixGraph *matrixGraph, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
+Status CreateUDG_M(MatrixGraph *graph, VexType *vexs, int vexNum, ArcInfo *arcs, int edgeNum);
 
 Status CreateUDN_M(MatrixGraph *matrixGraph, VexType *vexs, int vexNum, ArcInfo *arcInfo, int edgeNum);
 
-int LocateVex_M(MatrixGraph matrixGraph, VexType vexType);
+int LocateVex_M(MatrixGraph graph, VexType vexType);
 
 Status GetVex_M(MatrixGraph matrixGraph, int k, VexType *w);
 
 Status PutVex_M(MatrixGraph matrixGraph, int k, VexType w);
 
-int FirstAdjVex_M(MatrixGraph matrixGraph, int k);
+int FirstAdjVex_M(MatrixGraph graph, int k);
 
 int NextAdjVex_M(MatrixGraph matrixGraph, int k, int m);
 

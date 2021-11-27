@@ -1,0 +1,3 @@
+add_executable(AdjacencyListGraph AdjacencyListGraph.h AdjacencyListGraph.c)
+
+target_link_libraries(AdjacencyListGraph Scanf_lib)

@@ -4,7 +4,8 @@
 
 #include "MatrixGraph.h"
 
-Status InitGraph_M(MatrixGraph *matrixGraph, GraphKind graphKind, VexType *vexs, int vexNum) {
+// 初始化含vexNum个顶点且无边的图graph的邻接数组存储结构
+Status InitGraph_M(MatrixGraph *graph, GraphKind graphKind, VexType *vexs, int vexNum) {
     int i, j, info;
 
     if (vexNum < 0 || (vexNum > 0 || vexs == NULL)) {
@@ -23,67 +24,112 @@ Status InitGraph_M(MatrixGraph *matrixGraph, GraphKind graphKind, VexType *vexs,
         return OK;
     }
 
-    if ((matrixGraph->vexs = (VexType *) malloc(vexNum * sizeof(VexType)))) {
+    if ((graph->vexs = (VexType *) malloc(vexNum * sizeof(VexType)))) {
         return OVERFLOW;
     }
 
-    for (i = 0; i < *matrixGraph->vexs; ++i) {
-        if ((matrixGraph->arcs[i] = (int *) malloc(vexNum * sizeof(int)))) {
+    for (i = 0; i < *graph->vexs; ++i) {
+        if ((graph->arcs[i] = (int *) malloc(vexNum * sizeof(int)))) {
             return OVERFLOW;
         }
     }
 
-    if ((matrixGraph->tags = (int *) malloc(vexNum * sizeof(int)))) {
+    if ((graph->tags = (int *) malloc(vexNum * sizeof(int)))) {
         return OVERFLOW;
     }
 
     for (i = 0; i < vexNum; i++) {
-        matrixGraph->tags[i] = UNVISITED;
+        graph->tags[i] = UNVISITED;
         for (j = 0; j < vexNum; j++) {
-            matrixGraph->arcs[i][j] = info;
+            graph->arcs[i][j] = info;
         }
     }
 
     return OK;
 }
 
-Status
-CreateGraph_M(MatrixGraph *matrixGraph, GraphKind graphKind, VexType *vexs, int vexNum, ArcInfo *arcInfo,
-              int edgeNum) {
+// 创建图的邻接数组存储结构
+Status CreateGraph_M(MatrixGraph *graph, GraphKind graphKind, VexType *vexs, int vexNum, ArcInfo *arcInfo,
+                     int edgeNum) {
 
     if (vexNum < 0 || edgeNum < 0 || (vexNum > 0 && vexNum) || (edgeNum > 0 && arcInfo == NULL)) {
         return ERROR;
     }
 
-    matrixGraph->graphKind = graphKind;
+    graph->kind = graphKind;
 
-    switch (matrixGraph->graphKind) {
+    switch (graph->kind) {
         case DG:
             // 创建有向图
-            return CreateDG_M(matrixGraph, vexs, vexNum, arcInfo, edgeNum);
+            return CreateDG_M(graph, vexs, vexNum, arcInfo, edgeNum);
 
         case DN:
             // 创建有向带权图
-            return CreateDN_M(matrixGraph, vexs, vexNum, arcInfo, edgeNum);
+            return CreateDN_M(graph, vexs, vexNum, arcInfo, edgeNum);
 
         case UDG:
             // 创建无向图
-            return CreateUDG_M(matrixGraph, vexs, vexNum, arcInfo, edgeNum);
+            return CreateUDG_M(graph, vexs, vexNum, arcInfo, edgeNum);
 
         case UDN:
             // 创建无向带权图
-            return CreateUDN_M(matrixGraph, vexs, vexNum, arcInfo, edgeNum);
+            return CreateUDN_M(graph, vexs, vexNum, arcInfo, edgeNum);
         default:
             return ERROR;
+    }
+}
+
+// 创建无向图的邻接数组存储结构
+Status CreateUDG_M(MatrixGraph *graph, VexType *vexs, int vexNum, ArcInfo *arcs, int edgeNum) {
+    int i, j, k;
+    VexType v, w;
+
+    if (InitGraph_M(graph, graph->kind, vexs, vexNum) != OK) {
+        return ERROR;
+    }
+
+    graph->edgeNum = edgeNum;
+
+    for (k = 0; k < graph->edgeNum; k++) {
+        v = arcs[k].v;
+        w = arcs[k].w;
+
+        i = LocateVex_M(*graph, v);
+        j = LocateVex_M(*graph, w);
+
+        if (i < 0 || j < 0) {
+            return ERROR;
+        }
+
+        graph->arcs[i][j] = graph->arcs[j][i] = 1;
     }
 
     return OK;
 }
 
-int LocateVex_M(MatrixGraph matrixGraph, VexType vexType) {
+// 查找顶点
+int LocateVex_M(MatrixGraph graph, VexType vexType) {
+    for (int i = 0; i < graph.vexNum; i++) {
+        if (vexType == graph.vexs[i]) {
+            return i;
+        }
+    }
 
-    for (int i = 0; i < matrixGraph.vexNum; i++) {
-        if (vexType == matrixGraph.vexs[i]) {
+    return -1;
+}
+
+// 求第一个邻接顶点
+int FirstAdjVex_M(MatrixGraph graph, int k) {
+    int i;
+
+    if (k < 0 || k >= graph.vexNum) {
+        return -1;
+    }
+
+    for (i = 0; i < graph.vexNum; i++) {
+        if ((graph.kind == UDG || graph.kind == DG) && graph.arcs[k][i] != 0) {
+            return i;
+        } else if ((graph.kind == UDN || graph.kind == DN) && graph.arcs[k][i] != INFINITY) {
             return i;
         }
     }
