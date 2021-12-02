@@ -9,8 +9,8 @@
 
 typedef int KeyType;
 
-int BinarySearch(RecordElemType elem[], KeyType value, int low, int high);
+int BinarySearch(RecordElemType array[], KeyType value, int low, int high);
 
-int BinarySearch_iteration(RecordElemType elem[], KeyType value, int low, int high);
+int BinarySearch_iteration(RecordElemType array[], KeyType value, int low, int high);
 
 #endif //HELLO_C_BINARYSEARCH_H
