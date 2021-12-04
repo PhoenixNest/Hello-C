@@ -35,7 +35,7 @@
 
 ---
 
-# DS-Type-Array
+### DS-Type-Array
 
 + GeneralizeList - 广义表
 
