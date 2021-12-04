@@ -5,8 +5,8 @@
 使用教材：[《数据结构》吴伟民（高等教育出版社）](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/Book-PDF.zip)
 
 ```tree
-├── DS-Type-Sequence    // 顺序表示结构
-├── DS-Type-Link        // 链式表示结构
+├── DS-Type-Sequence    // 顺序存储结构
+├── DS-Type-Link        // 链式存储结构
 ├── DS-Type-Array       // 串与广义表
 ├── DS-Type-Tree        // 树型结构
 ├── DS-Type-Graph       // 图型结构
@@ -19,23 +19,35 @@
 
 ### DS-Type-Sequence
 
-+ SqList - 顺序表
-+ SqStack - 顺序栈
-+ SqQueue - 顺序队
++ SqList - 线性表（顺序存储）
++ SqStack - 栈（顺序存储）
++ SqQueue - 队列（顺序存储）
 
 ---
 
 ### DS-Type-Link
 
-+ LinkList - 链表
++ LinkList - 线性表（链式存储）
 + CircleLinkList - 单循环链表
 + DuelLinkList - 双向链表
-+ LinkStack - 链栈
-+ LinkQueue - 链队
++ LinkStack - 栈（链式存储）
++ LinkQueue - 队列（链式存储）
+
+---
+
+# DS-Type-Array
+
++ GeneralizeList - 广义表
 
 ---
 
 ### DS-Tree
+
++ BinarySequenceTree - 二叉树（顺序表示法）
++ BinaryLinkedTree - 二叉树（二叉链表存储法）
++ TernaryLinkedTree - 三叉树（三叉链表表示法）
++ BinarySortTree - 二叉排序树 / 二叉查找树
++ Heap - 堆
 
 > 二叉树性质
 
@@ -61,13 +73,16 @@
 
 > 树的存储
 
-+ 双亲表示法
-+ 双亲孩子表示法
-+ 孩子兄弟表示法
++ `双亲`表示法
++ `双亲孩子`表示法
++ `孩子兄弟`表示法
 
 ---
 
 ### DS-Graph
+
++ MatrixGraph - 图（数组 / 邻接矩阵表示法）
++ AdjacencyListGraph - 图（邻接表表示法）
 
 > 图的性质
 

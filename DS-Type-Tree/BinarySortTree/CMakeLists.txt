@@ -1,0 +1,3 @@
+add_executable(BinarySortTree BinarySortTree.h BinarySortTree.c)
+
+target_link_libraries(BinarySortTree Scanf_lib)

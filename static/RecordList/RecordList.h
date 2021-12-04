@@ -14,7 +14,7 @@ typedef int KeyType;
 
 typedef struct {
     KeyType value;
-} RecordElemType;
+} RecordType, RecordElemType;
 
 typedef struct {
     RecordElemType *base;
