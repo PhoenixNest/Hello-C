@@ -85,10 +85,6 @@
 + 加权合并规则法
 + 路径压缩法
 
-[//]: # (| <img align="center" style="margin:8px" src="https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade.png" /> | <img align="center"  style="margin:8px" src="https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade_Brief.png" />  |)
-
-[//]: # (|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|)
-
 ![UnionFindSets_Function_Upgrade](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade.png)
 
 ![UnionFindSets_Function_Upgrade_Brief](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade_Brief.png)
