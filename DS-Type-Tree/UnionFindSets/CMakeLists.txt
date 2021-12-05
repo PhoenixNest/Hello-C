@@ -1,0 +1,3 @@
+add_executable(UnionFindSets UnionFindSets.h UnionFindSets.c)
+
+target_link_libraries(UnionFindSets Scanf_lib)

@@ -47,6 +47,7 @@
 + BinaryLinkedTree - 二叉树（二叉链表存储法）
 + TernaryLinkedTree - 三叉树（三叉链表表示法）
 + BinarySortTree - 二叉排序树 / 二叉查找树
++ UnionFindSets - 并查集
 + Heap - 堆
 
 > 二叉树性质
@@ -76,6 +77,21 @@
 + `双亲`表示法
 + `双亲孩子`表示法
 + `孩子兄弟`表示法
+
+---
+
+> 并查集
+
++ 加权合并规则法
++ 路径压缩法
+
+[//]: # (| <img align="center" style="margin:8px" src="https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade.png" /> | <img align="center"  style="margin:8px" src="https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade_Brief.png" />  |)
+
+[//]: # (|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|)
+
+![UnionFindSets_Function_Upgrade](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade.png)
+
+![UnionFindSets_Function_Upgrade_Brief](https://cdn.jsdelivr.net/gh/PhoenixNest/Hello-C@master/readme/UnionFindSets_Function_Upgrade_Brief.png)
 
 ---
 
