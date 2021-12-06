@@ -177,7 +177,7 @@ Status CutRight(BinaryLinkedTree *root) {
 // -------------------------------------------------------------------------------//
 
 // 递归遍历
-// 前序遍历
+// 先序遍历
 // 根 - 左 - 右
 Status PreOrderTraverse(BinaryLinkedTree root, Status(*visit)(TreeElemType elem)) {
     // 当遇到 空左子树 时无需遍历
