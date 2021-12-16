@@ -305,7 +305,7 @@ void InOrderTraverse_I(BinaryLinkedTree root, Status(*visit)(TreeElemType elem))
         // 访问节点
         visit(pointer->data);
 
-        if (pointer->leftChild != NULL) {
+        if (pointer->rightChild != NULL) {
             pointer = GoFarLeft(pointer->rightChild, &stack);
             // 令 pointer 指向右孩子为根的子树的最左下结点
         } else if (StackEmpty_LS(stack) != TRUE) {
