@@ -136,3 +136,47 @@ int FirstAdjVex_M(MatrixGraph graph, int k) {
 
     return -1;
 }
+
+// 从 连通图graph 的 k顶点 出发，深度优先遍历
+Status DFS_M(MatrixGraph graph, int k, Status(*visit)(int)) {
+    int i;
+    // 访问k顶点
+    if (visit(k) == ERROR) {
+        return ERROR;
+    }
+
+    graph.tags[k] = VISITED;
+
+    for (i = FirstAdjVex_M(graph, k); i >= 0; i = NextAdjVex_M(graph, k, i)) {
+        // 位序为i的邻接顶点 未被访问过
+        if (graph.tags[i] == UNVISITED) {
+            // 对i顶点进行深度遍历
+            if (DFS_M(graph, i, visit)) {
+                return ERROR;
+            }
+        }
+    }
+
+    return OK;
+}
+
+// 深度优先遍历
+Status DFSTraverse_M(MatrixGraph graph, Status(*visit)(int)) {
+    int i;
+
+    // 初始化标志数组
+    for (i = 0; i < graph.vexNum; i++) {
+        graph.tags[i] = UNVISITED;
+    }
+
+    for (i = 0; i < graph.vexNum; i++) {
+        // 若 i顶点 未被访问，则以其为起点进行深度优先遍历
+        if (graph.tags[i] == UNVISITED) {
+            if (DFS_M(graph, i, visit)) {
+                return ERROR;
+            }
+        }
+    }
+
+    return OK;
+}

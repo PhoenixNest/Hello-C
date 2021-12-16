@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 #include "Status/Status.h"
+#include "../DS-Type-Link/LinkQueue/LinkQueue.h"
 
 #define UNVISITED 0
 #define VISITED 1

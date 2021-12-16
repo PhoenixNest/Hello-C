@@ -67,7 +67,7 @@ Status AddArc_M(MatrixGraph *matrixGraph, int k, int m, int info);
 
 Status RemoveArc_M(MatrixGraph *matrixGraph, int k, int m);
 
-Status DFSTraverse_M(MatrixGraph matrixGraph, Status(*visit)(int));
+Status DFSTraverse_M(MatrixGraph graph, Status(*visit)(int));
 
 Status BFSTraverse_M(MatrixGraph matrixGraph, Status(*visit)(int));
 
