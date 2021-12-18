@@ -152,3 +152,37 @@ Status DeleteBST(BinarySortTree *root, KeyType value) {
     // 对右子树递归并返回结果
     return DeleteBST(&(*root)->rightChild, value);
 }
+
+// [2019.829] 算法填空题2
+// 判断二叉查找树是否为二叉平衡树
+Status isAVL(BinarySortTree tree, int *high) {
+    int h1, h2;
+
+    // 结点
+    if (tree == NULL) {
+        *high = 0;
+        return TRUE;
+    }
+
+    // 单枝树
+    if (!tree->leftChild && !tree->rightChild) {
+        *high = 1;
+        return FALSE;
+    }
+
+    // 统计左右子树平衡因子
+    if (!isAVL((BinarySortTree) tree->leftChild, &h1) || !isAVL((BinarySortTree) tree->rightChild, &h2)) {
+        return FALSE;
+    }
+
+    // 计算两分枝树平衡因子
+    *high = (h1 > h2 ? h1 : h2) + 1;
+
+    // 平衡二叉树的平衡因子只可能为 -1，0，1
+    // 此处对平衡因子进行取绝对值处理，若绝对值小于2，则为平衡二叉树
+    if (abs(h2 - h2) < 2) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}

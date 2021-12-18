@@ -69,6 +69,22 @@ Status visitAllAdjVex(ALGraph graph, int k, Status(*visit)(int)) {
     return OK;
 }
 
+// [2019.829] 算法填空题3
+// 从k顶点出发对连通图G进行深度优先遍历
+void DFS_From_K_Node_AL(ALGraph graph, int k) {
+    AdjVexNodeP p;
+
+    printf("%c", graph.vexs[k]);
+
+    graph.tags[k] = VISITED;
+
+    for (p = graph.vexs[k].firstArc; p != NULL; p = p->nextArc) {
+        if (graph.tags[p->adjVex] == UNVISITED) {
+            DFS_From_K_Node_AL(graph, p->adjVex);
+        }
+    }
+}
+
 // 广度优先遍历
 Status BFSTraverse_AL(ALGraph graph, Status (*visit)(int)) {
     int i, j, k;

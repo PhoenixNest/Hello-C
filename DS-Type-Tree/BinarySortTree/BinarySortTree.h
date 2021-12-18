@@ -5,6 +5,7 @@
 #ifndef HELLO_C_BINARYSORTTREE_H
 #define HELLO_C_BINARYSORTTREE_H
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,5 +28,7 @@ BinarySortTree SearchBST_I(BinarySortTree root, KeyType value);
 Status InsertBST(BinarySortTree *root, RecordElemType value);
 
 Status DeleteBST(BinarySortTree *root, KeyType value);
+
+Status isAVL(BinarySortTree tree, int *high);
 
 #endif //HELLO_C_BINARYSORTTREE_H

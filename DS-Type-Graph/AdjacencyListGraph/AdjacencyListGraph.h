@@ -61,6 +61,8 @@ Status AddArc_AL(ALGraph graph, int k, int m, int info);
 
 Status RemoveArc_AL(ALGraph *graph, int k, int m);
 
+void DFS_From_K_Node_AL(ALGraph graph, int k);
+
 Status DFSTraverse_AL(ALGraph graph, Status (*visit)(int));
 
 Status BFSTraverse_AL(ALGraph graph, Status (*visit)(int));

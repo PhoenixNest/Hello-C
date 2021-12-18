@@ -44,3 +44,18 @@ Status DeQueue_LQ(LinkQueue *linkQueue, ElemType *elem) {
 
     return OK;
 }
+
+// [2019.829] 算法填空题2
+// 清空带头结点的链队列
+void Clear_LQ(LinkQueue *queue) {
+    LinkQueue s, p = queue->front->next;
+
+    while (p != NULL) {
+        s = p;
+        p = p->next;
+        free(s);
+    }
+
+    queue->front->next = NULL;
+    queue->rear = queue->front;
+}
